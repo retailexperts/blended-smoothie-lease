@@ -402,6 +402,41 @@
     </style>
 </head>
 <body>
+    <body>
+  <div id="password-screen" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#f6f8fa;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:10000;">
+    <form id="pwd-form" style="background:white;padding:32px 36px;border-radius:7px;box-shadow:0 4px 16px rgba(0,0,0,0.11);display:flex;flex-direction:column;align-items:center;">
+      <h2 style="margin-bottom:18px;">Protected Lease Summary</h2>
+      <input type="password" id="pwd" placeholder="Enter password" style="padding: 9px 13px;font-size:1.15em;margin-bottom:16px;border-radius:4px;border:1px solid #bbb;width:220px;">
+      <button type="submit" style="padding:8px 20px;font-size:1.07em;color:#fff;background:#1167b1;border:none;border-radius:3px;">Unlock</button>
+      <div id="pwd-error" style="color:red;height:20px;margin-top:12px;font-size:0.98em;"></div>
+    </form>
+  </div>
+
+  <script>
+    // Simple front-end password system
+    var CORRECT_PWD = "8415";
+    var unlock = function() {
+      document.getElementById("password-screen").style.display = "none";
+      sessionStorage.setItem("blended_lease_pwd", CORRECT_PWD);
+    };
+
+    // Auto-unlock if already authenticated in this tab
+    if(sessionStorage.getItem("blended_lease_pwd") === CORRECT_PWD) {
+      unlock();
+    } else {
+      document.getElementById("pwd-form").onsubmit = function(e){
+        e.preventDefault();
+        var val = document.getElementById("pwd").value;
+        if(val === CORRECT_PWD){
+          unlock();
+        } else {
+          document.getElementById("pwd-error").textContent = "Incorrect password.";
+          document.getElementById("pwd").value = "";
+        }
+      };
+    }
+  </script>
+
     <div class="container">
         <div class="header">
             <h1>LEASE AGREEMENT SUMMARY</h1>
