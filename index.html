@@ -3,136 +3,1059 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blended Smoothie Lease Summary</title>
+    <title>Lease Agreement Summary - Blended Smoothie & Juice Bar</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #f5f5f5;
             color: #333;
+            line-height: 1.6;
         }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+        
         .header {
-            text-align: center;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            padding: 40px;
+            color: white;
+            border-bottom: 5px solid #e74c3c;
         }
-        .section {
-            margin-bottom: 25px;
-            padding: 15px;
-            border-left: 4px solid #4CAF50;
-            background-color: #f9f9f9;
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
-        .section h3 {
-            margin-top: 0;
-            color: #2E7D32;
-        }
-        .terms-grid {
+        
+        .header-details {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 30px;
             margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
         }
-        .term-item {
-            padding: 10px;
-            background: white;
-            border-radius: 5px;
+        
+        .header-item {
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        
+        .header-item strong {
+            color: #ecf0f1;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        
+        .nav-menu {
+            background: #34495e;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .highlight {
-            background-color: #E8F5E8;
-            padding: 2px 5px;
-            border-radius: 3px;
+        
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            overflow-x: auto;
         }
-        .footer {
+        
+        .nav-menu li {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .nav-menu a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
+            border-right: 1px solid rgba(255,255,255,0.1);
+            transition: background 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            background: #2c3e50;
+        }
+        
+        .section {
+            padding: 50px 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e74c3c;
+            font-weight: 400;
+        }
+        
+        .section h3 {
+            color: #34495e;
+            font-size: 1.3em;
+            margin: 25px 0 15px;
+            font-weight: 500;
+        }
+        
+        .key-terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .term-card {
+            background: #f8f9fa;
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .term-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .term-card .value {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #e74c3c;
+            margin: 10px 0;
+        }
+        
+        .term-card .details {
             color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        
+        .timeline-container {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #ddd;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 20px 0 20px 80px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 40px;
+            top: 25px;
+            width: 20px;
+            height: 20px;
+            background: #e74c3c;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #f0f0f0;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-description {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .financial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .financial-table th {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .financial-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .financial-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .financial-table .amount {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        .responsibilities-list {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .responsibility-item {
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+        
+        .responsibility-item:last-child {
+            border-bottom: none;
+        }
+        
+        .responsibility-icon {
+            width: 30px;
+            height: 30px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .responsibility-content h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .responsibility-content p {
+            color: #666;
+            font-size: 0.95em;
+            margin: 0;
+        }
+        
+        .alert-box {
+            background: #fef5e7;
+            border: 2px solid #f39c12;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .alert-box h4 {
+            color: #e67e22;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .alert-box ul {
+            margin-left: 20px;
+            color: #7f6000;
+        }
+        
+        .alert-box li {
+            margin: 8px 0;
+        }
+        
+        .info-box {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .info-box h4 {
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+        
+        .exclusive-rights {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            border: 2px solid #4caf50;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .exclusive-rights h3 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+        
+        .protection-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .protection-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .protection-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .print-button {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 20px auto;
+            display: block;
+            transition: background 0.3s;
+        }
+        
+        .print-button:hover {
+            background: #c0392b;
+        }
+        
+        @media print {
+            .nav-menu, .print-button {
+                display: none;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-details {
+                grid-template-columns: 1fr;
+            }
+            .nav-menu ul {
+                flex-direction: column;
+            }
+            .nav-menu a {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🥤 Blended Smoothie Lease Summary</h1>
-        <p>Professional Lease Agreement Overview</p>
-    </div>
+    <div class="container">
+        <div class="header">
+            <h1>LEASE AGREEMENT SUMMARY</h1>
+            <div>Blended Smoothie & Juice Bar</div>
+            <div class="header-details">
+                <div class="header-item">
+                    <strong>Tenants:</strong>
+                    Arman & Katrina Bryant<br>
+                    d/b/a Blended Smoothie & Juice Bar
+                </div>
+                <div class="header-item">
+                    <strong>Property Location:</strong>
+                    3538 Highway 92, Unit Retail 3<br>
+                    Chastain Hill, Douglasville, GA
+                </div>
+                <div class="header-item">
+                    <strong>Lease Execution Date:</strong>
+                    [To be filled upon signing]
+                </div>
+                <div class="header-item">
+                    <strong>Document Type:</strong>
+                    Commercial Retail Lease<br>
+                    Client-Friendly Summary
+                </div>
+            </div>
+        </div>
 
-    <div class="section">
-        <h3>Property Information</h3>
-        <p><strong>Property Address:</strong> 123 Smoothie Boulevard, Fresh City, FC 12345</p>
-        <p><strong>Property Type:</strong> Commercial Smoothie Shop Space</p>
-        <p><strong>Total Square Footage:</strong> 1,200 sq ft</p>
-        <p><strong>Lease Type:</strong> Triple Net Lease (NNN)</p>
-    </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#key-terms">Key Terms</a></li>
+                <li><a href="#financial">Financial Details</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#responsibilities">Responsibilities</a></li>
+                <li><a href="#protections">Protections</a></li>
+                <li><a href="#operations">Operations</a></li>
+            </ul>
+        </nav>
 
-    <div class="section">
-        <h3>Lease Terms</h3>
-        <div class="terms-grid">
-            <div class="term-item">
-                <strong>Lease Duration:</strong><br>
-                <span class="highlight">5 Years</span>
+        <section id="key-terms" class="section">
+            <h2>KEY LEASE TERMS</h2>
+            
+            <div class="key-terms-grid">
+                <div class="term-card">
+                    <h4>Premises</h4>
+                    <div class="value">1,080 SF</div>
+                    <div class="details">
+                        Unit Retail 3 in Chastain Hill development. 
+                        Total retail center: ~8,384 SF. 
+                        Your pro rata share: ~12.9% of common areas.
+                    </div>
+                </div>
+                
+                <div class="term-card">
+                    <h4>Lease Term</h4>
+                    <div class="value">84 Months</div>
+                    <div class="details">
+                        7-year initial term from rent commencement.
+                        One 3-year renewal option available.
+                        Total potential occupancy: 10 years.
+                    </div>
+                </div>
+                
+                <div class="term-card">
+                    <h4>Base Rent</h4>
+                    <div class="value">$25,920/year</div>
+                    <div class="details">
+                        Starting at $2,160/month in Year 1.
+                        Annual increases of ~3%.
+                        Year 7: $2,579.15/month.
+                    </div>
+                </div>
+                
+                <div class="term-card">
+                    <h4>Security Deposit</h4>
+                    <div class="value">$3,119.15</div>
+                    <div class="details">
+                        Due at lease signing.
+                        Refundable at lease end if all terms met.
+                        Must replenish if used for defaults.
+                    </div>
+                </div>
+                
+                <div class="term-card">
+                    <h4>TI Allowance</h4>
+                    <div class="value">$27,000</div>
+                    <div class="details">
+                        Maximum reimbursement for build-out.
+                        Paid after opening and submitting docs.
+                        Must request within 90 days of opening.
+                    </div>
+                </div>
+                
+                <div class="term-card">
+                    <h4>Personal Guaranty</h4>
+                    <div class="value">Required</div>
+                    <div class="details">
+                        Both Katrina and Arman Bryant must personally guarantee all lease obligations.
+                        Remains in effect for entire term.
+                    </div>
+                </div>
             </div>
-            <div class="term-item">
-                <strong>Monthly Rent:</strong><br>
-                <span class="highlight">$3,500</span>
+
+            <div class="alert-box">
+                <h4>⚠ Critical Dates and Deadlines</h4>
+                <ul>
+                    <li><strong>Opening Deadline:</strong> Must open within 30 days after rent commencement</li>
+                    <li><strong>TI Allowance Request:</strong> Within 90 days of opening or funds are forfeited</li>
+                    <li><strong>Renewal Notice:</strong> 9-12 months before initial term expires</li>
+                    <li><strong>Monthly Sales Reports:</strong> Due by the 10th of each month</li>
+                </ul>
             </div>
-            <div class="term-item">
-                <strong>Security Deposit:</strong><br>
-                <span class="highlight">$7,000</span>
+        </section>
+
+        <section id="financial" class="section">
+            <h2>FINANCIAL OBLIGATIONS</h2>
+            
+            <h3>Base Rent Schedule (84-Month Term)</h3>
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th>Lease Year</th>
+                        <th>Annual Rent</th>
+                        <th>Monthly Payment</th>
+                        <th>% Increase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Year 1 (Months 1-12)</td>
+                        <td class="amount">$25,920</td>
+                        <td class="amount">$2,160.00</td>
+                        <td>Base</td>
+                    </tr>
+                    <tr>
+                        <td>Year 2 (Months 13-24)</td>
+                        <td class="amount">$26,697.60</td>
+                        <td class="amount">$2,224.80</td>
+                        <td>3.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Year 3 (Months 25-36)</td>
+                        <td class="amount">$27,498.53</td>
+                        <td class="amount">$2,291.54</td>
+                        <td>3.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Year 4 (Months 37-48)</td>
+                        <td class="amount">$28,323.48</td>
+                        <td class="amount">$2,360.29</td>
+                        <td>3.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Year 5 (Months 49-60)</td>
+                        <td class="amount">$29,173.19</td>
+                        <td class="amount">$2,431.10</td>
+                        <td>3.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Year 6 (Months 61-72)</td>
+                        <td class="amount">$30,048.38</td>
+                        <td class="amount">$2,504.03</td>
+                        <td>3.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Year 7 (Months 73-84)</td>
+                        <td class="amount">$30,949.84</td>
+                        <td class="amount">$2,579.15</td>
+                        <td>3.0%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Additional Monthly Costs (Estimated)</h3>
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th>Expense Category</th>
+                        <th>Estimated Monthly Cost</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Operating Expenses (CAM)</td>
+                        <td class="amount">~$540</td>
+                        <td>Based on $6.00/SF estimate for 2026. Includes insurance, taxes, maintenance. Annual cap: 10% increase on controllable expenses.</td>
+                    </tr>
+                    <tr>
+                        <td>Utilities</td>
+                        <td class="amount">Variable</td>
+                        <td>Electric, water, sewer, gas, internet - all paid directly by tenant</td>
+                    </tr>
+                    <tr>
+                        <td>Grease Trap Service</td>
+                        <td class="amount">Variable</td>
+                        <td>Shared among food tenants or 100% if sole food user</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Initial Capital Requirements</h3>
+            <div class="info-box">
+                <h4>Due at Lease Signing</h4>
+                <ul>
+                    <li>Security Deposit: $3,119.15</li>
+                    <li>Prepaid Rent: $2,700.00</li>
+                    <li><strong>Total Due: $5,819.15</strong></li>
+                </ul>
+                <p style="margin-top: 15px;">Note: The $2,700 prepaid rent will be applied to your first month(s) of rent when the lease commences.</p>
             </div>
-            <div class="term-item">
-                <strong>Lease Start Date:</strong><br>
-                <span class="highlight">January 1, 2025</span>
+
+            <h3>Tenant Improvement (TI) Allowance Details</h3>
+            <div class="responsibilities-list">
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">$</div>
+                    <div class="responsibility-content">
+                        <h4>Maximum Allowance: $27,000</h4>
+                        <p>Approximately $25 per square foot for your 1,080 SF space. This is a reimbursement - you pay upfront, then get reimbursed.</p>
+                    </div>
+                </div>
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">✓</div>
+                    <div class="responsibility-content">
+                        <h4>Eligible Expenses</h4>
+                        <p>Permanent improvements only: construction, built-in fixtures, permanent signage. NOT eligible: permits, design fees, movable equipment.</p>
+                    </div>
+                </div>
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">📋</div>
+                    <div class="responsibility-content">
+                        <h4>Requirements for Payment</h4>
+                        <p>Must be open for business, current on rent, provide certificate of occupancy, contractor lien waivers, and other documentation.</p>
+                    </div>
+                </div>
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">⏰</div>
+                    <div class="responsibility-content">
+                        <h4>Critical Deadline</h4>
+                        <p>Must request within 90 days of opening or forfeit unused funds. If you default, must repay unamortized portion.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="section">
+            <h2>LEASE TIMELINE & MILESTONES</h2>
+            
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Lease Execution & Initial Payment</div>
+                            <div class="timeline-description">Sign lease, pay $5,819.15 (security deposit + prepaid rent)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Tender of Possession</div>
+                            <div class="timeline-description">Landlord delivers space with "Landlord's Work" complete. You receive keys and can begin your build-out.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Build-Out Period (Up to 180 Days)</div>
+                            <div class="timeline-description">Complete your interior improvements. No rent during this period. Must complete construction and prepare to open.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Commencement Date</div>
+                            <div class="timeline-description">Rent begins on earlier of: (1) opening day, or (2) 180 days after possession. First full payment due.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Grand Opening (Within 30 Days)</div>
+                            <div class="timeline-description">Must open for business within 30 days after Commencement Date. Begin continuous operation.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">TI Reimbursement Request (Within 90 Days)</div>
+                            <div class="timeline-description">Submit all documentation for $27,000 reimbursement within 90 days of opening or forfeit funds.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Year 6: Renewal Decision Window</div>
+                            <div class="timeline-description">Between months 72-75, notify landlord if exercising 3-year renewal option.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Year 7: Initial Term Ends</div>
+                            <div class="timeline-description">84-month term concludes. Either begin renewal term or vacate premises.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Renewal Option Terms</h3>
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th>Option Period</th>
+                        <th>Annual Rent</th>
+                        <th>Monthly Payment</th>
+                        <th>Notice Required</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Year 8 (Months 85-96)</td>
+                        <td class="amount">$31,878.33</td>
+                        <td class="amount">$2,656.53</td>
+                        <td rowspan="3">Written notice 9-12 months before Year 7 ends</td>
+                    </tr>
+                    <tr>
+                        <td>Year 9 (Months 97-108)</td>
+                        <td class="amount">$32,834.68</td>
+                        <td class="amount">$2,736.22</td>
+                    </tr>
+                    <tr>
+                        <td>Year 10 (Months 109-120)</td>
+                        <td class="amount">$33,819.72</td>
+                        <td class="amount">$2,818.31</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="responsibilities" class="section">
+            <h2>TENANT RESPONSIBILITIES & MAINTENANCE</h2>
+            
+            <h3>Operating Requirements</h3>
+            <div class="responsibilities-list">
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">🕐</div>
+                    <div class="responsibility-content">
+                        <h4>Business Hours</h4>
+                        <p>Must operate continuously during standard hours: 10:00 AM to 10:00 PM, Monday-Sunday. Minimum 40 hours per week. Landlord can adjust required hours.</p>
+                    </div>
+                </div>
+                
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">📊</div>
+                    <div class="responsibility-content">
+                        <h4>Sales Reporting</h4>
+                        <p>Submit monthly gross sales reports by the 10th of each month. Must maintain proper books, POS records, tax returns. Landlord can audit annually.</p>
+                    </div>
+                </div>
+                
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">🏪</div>
+                    <div class="responsibility-content">
+                        <h4>Continuous Operation</h4>
+                        <p>Keep store fully stocked and staffed. Cannot go "dark" except for temporary closures (repairs, emergencies). Must use best efforts to maximize sales.</p>
+                    </div>
+                </div>
+                
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">🧹</div>
+                    <div class="responsibility-content">
+                        <h4>Cleanliness Standards</h4>
+                        <p>Maintain "first-class" operation with health inspection score of at least 90/A-. Landlord can require professional cleaning at your expense if standards drop.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Maintenance Responsibilities</h3>
+            <div class="info-box">
+                <h4>What You Maintain (Tenant)</h4>
+                <ul>
+                    <li>All interior walls, flooring, and finishes</li>
+                    <li>Storefront doors and windows (including glass)</li>
+                    <li>HVAC unit (must maintain service contract)</li>
+                    <li>All plumbing and electrical fixtures within space</li>
+                    <li>Interior lighting and any installed equipment</li>
+                    <li>Grease trap connection from kitchen</li>
+                    <li>Any damage caused by your operations</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <h4>What Landlord Maintains</h4>
+                <ul>
+                    <li>Building structure: roof, exterior walls, foundation</li>
+                    <li>Common areas: parking lots, sidewalks, landscaping</li>
+                    <li>Major structural elements and load-bearing walls</li>
+                    <li>Gutters, downspouts, and drainage systems</li>
+                    <li>Common area utilities and infrastructure</li>
+                </ul>
+                <p style="margin-top: 10px;"><em>Note: These costs are typically passed through in CAM charges</em></p>
+            </div>
+
+            <h3>Signage Requirements</h3>
+            <div class="responsibility-item">
+                <div class="responsibility-icon">🪧</div>
+                <div class="responsibility-content">
+                    <h4>Sign Installation & Approval</h4>
+                    <p>All signage requires written landlord approval before installation. Must comply with shopping center's sign criteria (Exhibit E). You pay for fabrication, installation, maintenance, permits, and eventual removal. Landlord can modify sign criteria and require updates at your expense.</p>
+                </div>
+            </div>
+
+            <h3>Use Restrictions</h3>
+            <div class="alert-box">
+                <h4>Permitted Use Only</h4>
+                <ul>
+                    <li>Operate ONLY as a smoothie and juice bar per agreed menu (Exhibit H)</li>
+                    <li>Must use trade name "Blended Smoothie Bar"</li>
+                    <li>Cannot change concept without landlord approval</li>
+                    <li>No illegal activities or hazardous materials</li>
+                    <li>Must comply with all laws and regulations</li>
+                    <li>Cannot violate other tenants' exclusive rights</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="protections" class="section">
+            <h2>TENANT PROTECTIONS & EXCLUSIVE RIGHTS</h2>
+            
+            <div class="exclusive-rights">
+                <h3>🛡️ Your Exclusive Use Protection</h3>
+                <p style="font-size: 1.1em; margin-bottom: 20px;">
+                    <strong>You are the ONLY dedicated smoothie/juice bar in Chastain Hill retail center.</strong>
+                </p>
+                
+                <h4>No Other Small Tenant (Under 5,000 SF) Can:</h4>
+                <ul class="protection-list">
+                    <li>Operate substantially similar to a smoothie/juice bar</li>
+                    <li>Derive more than 10% of sales from made-on-site smoothies</li>
+                    <li>Derive more than 10% of sales from fresh-pressed juices</li>
+                    <li>Derive more than 10% of sales from blended fruit bowls</li>
+                </ul>
+                
+                <h4 style="margin-top: 25px;">Exceptions to Exclusive:</h4>
+                <ul style="margin-left: 20px; color: #555;">
+                    <li>Existing tenants already in place (grandfathered)</li>
+                    <li>Large format tenants over 5,000 SF (e.g., grocery stores)</li>
+                    <li>Replacement tenants in same space as prior existing tenant</li>
+                </ul>
+                
+                <div class="alert-box" style="margin-top: 20px;">
+                    <h4>⚠ Maintaining Your Exclusive</h4>
+                    <p>Protection remains as long as you're open and not in default. Lost if you stop operating for 60+ days or violate permitted use.</p>
+                </div>
+            </div>
+
+            <h3>Operating Expense (CAM) Protections</h3>
+            <div class="responsibilities-list">
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">%</div>
+                    <div class="responsibility-content">
+                        <h4>10% Annual Cap on Controllable Expenses</h4>
+                        <p>Controllable operating expenses cannot increase more than 10% per year (cumulative, compounding). Non-controllable items like taxes, utilities, insurance have no cap.</p>
+                    </div>
+                </div>
+                
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">📋</div>
+                    <div class="responsibility-content">
+                        <h4>Excluded from CAM</h4>
+                        <p>Capital expenditures are explicitly excluded from CAM charges (except as allowed by standard accounting rules).</p>
+                    </div>
+                </div>
+                
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">💰</div>
+                    <div class="responsibility-content">
+                        <h4>Annual Reconciliation</h4>
+                        <p>You pay estimated CAM monthly. Annual reconciliation against actual costs - you receive credit if actual is lower than estimates.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="operations" class="section">
+            <h2>OPERATIONAL CONSIDERATIONS</h2>
+            
+            <h3>Landlord Rights to Be Aware Of</h3>
+            
+            <div class="responsibilities-list">
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">🚪</div>
+                    <div class="responsibility-content">
+                        <h4>Right of Entry</h4>
+                        <p>Landlord can enter at reasonable times for inspections, repairs, or to show to prospective buyers/tenants. Emergency access allowed anytime. No rent reduction for inconvenience.</p>
+                    </div>
+                </div>
+                
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">🏗️</div>
+                    <div class="responsibility-content">
+                        <h4>Construction & Development</h4>
+                        <p>Landlord may perform improvements to the center during your term. Reasonable efforts to minimize disruption, but no rent abatement for noise, dust, or temporary access changes as long as your access isn't materially impaired.</p>
+                    </div>
+                </div>
+                
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">📍</div>
+                    <div class="responsibility-content">
+                        <h4>Relocation Right (One-Time)</h4>
+                        <p>Landlord can relocate you once to similar space in center with 60 days' notice. Landlord pays all moving costs, construction of new space, and up to $2,000 for rebranding. Rent adjusts proportionally if new space is smaller.</p>
+                    </div>
+                </div>
+                
+                <div class="responsibility-item">
+                    <div class="responsibility-icon">📋</div>
+                    <div class="responsibility-content">
+                        <h4>Rules and Regulations</h4>
+                        <p>Must follow property rules (Exhibit F) regarding signage, trash, parking, etc. Landlord can modify rules. Must comply with any changes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Assignment & Subletting</h3>
+            <div class="alert-box">
+                <h4>Transfer Restrictions</h4>
+                <ul>
+                    <li>Cannot assign lease or sublet without landlord's prior written consent</li>
+                    <li>Landlord can approve or deny in sole discretion</li>
+                    <li>$2,500 processing fee plus legal costs for review</li>
+                    <li>Original tenant remains liable even after assignment</li>
+                    <li>Any profit from sublease goes to landlord</li>
+                    <li>Includes sale of business or major ownership changes</li>
+                </ul>
+            </div>
+
+            <h3>Grease Trap Requirements</h3>
+            <div class="info-box">
+                <h4>Food Service Specific Requirements</h4>
+                <ul>
+                    <li>Must connect kitchen waste to building's grease trap system</li>
+                    <li>Share maintenance costs with other food tenants</li>
+                    <li>If sole food user, bear 100% of grease trap costs</li>
+                    <li>Landlord arranges service; you pay your share</li>
+                    <li>May be billed as CAM or separate additional rent</li>
+                </ul>
+            </div>
+
+            <h3>Default Provisions</h3>
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th>Type of Default</th>
+                        <th>Grace Period</th>
+                        <th>Consequences</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Non-payment of rent</td>
+                        <td>Written notice required</td>
+                        <td>Eviction, acceleration of rent, loss of TI allowance</td>
+                    </tr>
+                    <tr>
+                        <td>Failure to open on time</td>
+                        <td>30 days after commencement</td>
+                        <td>Material breach, possible termination</td>
+                    </tr>
+                    <tr>
+                        <td>Going dark/ceasing operations</td>
+                        <td>60+ days</td>
+                        <td>Loss of exclusive use, breach of lease</td>
+                    </tr>
+                    <tr>
+                        <td>Violation of use restrictions</td>
+                        <td>Cure period per notice</td>
+                        <td>Loss of exclusive, potential termination</td>
+                    </tr>
+                    <tr>
+                        <td>Failure to maintain insurance</td>
+                        <td>Immediate</td>
+                        <td>Landlord can obtain and charge tenant</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Insurance Requirements</h3>
+            <div class="info-box">
+                <h4>Required Coverage (Details in Full Lease)</h4>
+                <ul>
+                    <li>General liability insurance with required minimums</li>
+                    <li>Property insurance for your improvements and equipment</li>
+                    <li>Business interruption insurance</li>
+                    <li>Workers' compensation as required by law</li>
+                    <li>Landlord named as additional insured on liability policies</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="footer">
+            <button class="print-button" onclick="window.print()">Print This Summary</button>
+            <div class="footer-content">
+                <h3>Important Notice</h3>
+                <p>This summary is intended to provide a clear understanding of key lease terms but does not replace the full lease agreement. All terms and conditions in the actual lease document govern. Please consult with your attorney for legal advice regarding any provisions.</p>
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3);">
+                    <p>Prepared for: Arman & Katrina Bryant</p>
+                    <p>Business: Blended Smoothie & Juice Bar</p>
+                    <p>Location: Chastain Hill, Douglasville, GA</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="section">
-        <h3>Additional Costs & Responsibilities</h3>
-        <ul>
-            <li><strong>Property Taxes:</strong> Tenant responsible for proportionate share</li>
-            <li><strong>Insurance:</strong> Tenant must maintain commercial general liability ($1M minimum)</li>
-            <li><strong>Maintenance:</strong> Tenant responsible for interior maintenance and repairs</li>
-            <li><strong>Utilities:</strong> Tenant responsible for all utilities (electric, water, gas, internet)</li>
-            <li><strong>CAM Charges:</strong> $250/month for common area maintenance</li>
-        </ul>
-    </div>
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-menu a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
 
-    <div class="section">
-        <h3>Special Provisions</h3>
-        <ul>
-            <li>Equipment installation permitted with landlord approval</li>
-            <li>Signage rights included for storefront display</li>
-            <li>Option to renew for additional 3-year term</li>
-            <li>Early termination clause with 6-month notice and penalty fee</li>
-            <li>Permitted use: Smoothie and health food retail operations</li>
-        </ul>
-    </div>
+        // Highlight active section in navigation
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
 
-    <div class="section">
-        <h3>Key Dates & Milestones</h3>
-        <p><strong>Lease Execution Date:</strong> December 15, 2024</p>
-        <p><strong>Lease Commencement:</strong> January 1, 2025</p>
-        <p><strong>First Rent Payment Due:</strong> January 1, 2025</p>
-        <p><strong>Lease Expiration:</strong> December 31, 2029</p>
-        <p><strong>Renewal Option Deadline:</strong> June 30, 2029</p>
-    </div>
-
-    <div class="section">
-        <h3>Contact Information</h3>
-        <p><strong>Landlord:</strong> Fresh Properties LLC</p>
-        <p><strong>Property Manager:</strong> Jane Smith</p>
-        <p><strong>Phone:</strong> (555) 123-4567</p>
-        <p><strong>Email:</strong> leasing@freshproperties.com</p>
-    </div>
-
-    <div class="footer">
-        <p>This lease summary is for informational purposes only. Please refer to the complete lease agreement for all terms and conditions.</p>
-        <p><em>Generated: September 5, 2025</em></p>
-    </div>
+            navLinks.forEach(link => {
+                link.style.background = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.background = '#2c3e50';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
